@@ -2,7 +2,7 @@ package com.study.calculator.console
 
 object Main {
   enum Operation:
-    case Add, Subscruct, Multiply, Divide, Power
+    case Add, Substruct, Multiply, Divide, Power
 
   @main def calculator() =
     println("Console Calculator. Print :q to quit")
