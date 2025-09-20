@@ -23,7 +23,7 @@ def repl(): Unit =
   else if input.trim.isEmpty then
     repl()
   else
-    val result = input match
+    val result = input.trim match
       case Pattern(a, operation, b) => calculate(a.toInt, operation, b.toInt)
       case other => Left("Invalid input!")
     result.fold(error => println(error), res => println(s"Result is [$res]"))
