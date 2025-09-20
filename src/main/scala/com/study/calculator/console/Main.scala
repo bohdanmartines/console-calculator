@@ -40,4 +40,6 @@ def calculate(a: Int, operation: Operation, b: Int): Either[String, Double] =
     case Add => Right(a + b)
     case Substruct => Right(a - b)
     case Multiply => Right(a * b)
-    case Divide => Right(a / b)
+    case Divide =>
+      if b == 0 then Left("Cannot divide by zero!")
+      else Right(a / b)
