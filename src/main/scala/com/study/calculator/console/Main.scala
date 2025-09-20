@@ -1,5 +1,7 @@
 package com.study.calculator.console
 
+import com.study.calculator.console.Operation.{Add, Divide, Multiply, Substruct}
+
 import scala.annotation.tailrec
 import scala.io.StdIn.readLine
 
@@ -34,5 +36,8 @@ def calculate(a: Int, operation: String, b: Int): Either[String, Double] =
 
 
 def calculate(a: Int, operation: Operation, b: Int): Either[String, Double] =
-  println(s"Your operation is $a $operation $b")
-  Right(0.0) // TODO Placeholder
+  operation match
+    case Add => Right(a + b)
+    case Substruct => Right(a - b)
+    case Multiply => Right(a * b)
+    case Divide => Right(a / b)
