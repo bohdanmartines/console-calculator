@@ -6,9 +6,6 @@ object Main {
 
   val Pattern = raw"(\d+)\s*([+\-*/^])\s*(\d+)".r
 
-  enum Operation:
-    case Add, Substruct, Multiply, Divide, Power
-
   def repl(): Unit = {
     println("Examples:  2 + 3 | 3 * 4 | 3 ^ 2")
     val input = readLine("calc> ")
@@ -20,7 +17,7 @@ object Main {
       repl()
     else
       val result = input.trim match
-        case Pattern(a, operation, b) => Some(calculate(a.toInt, operation, b.toInt))
+        case Pattern(a, operation, b) => Some(calculate(a.toInt, Operation.parse(operation), b.toInt))
         case _ => None
       result match
         case Some(x) => println(s"Result is [$result]")
@@ -28,7 +25,8 @@ object Main {
       repl()
   }
 
-  def calculate(a: Int, operation: String, b: Int): Double = {
+  def calculate(a: Int, operation: Operation, b: Int): Double = {
+    println(s"Parsed instruction is $a $operation $b")
     123.456 // TODO Placeholder
   }
 
