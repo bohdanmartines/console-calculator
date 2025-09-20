@@ -20,13 +20,16 @@ object Main {
       repl()
     else
       val result = input match
-        case Pattern(a, operation, b) => calculate(a.toInt, operation, b.toInt)
-      println(s"Result is [$result]")
+        case Pattern(a, operation, b) => Some(calculate(a.toInt, operation, b.toInt))
+        case _ => None
+      result match
+        case Some(x) => println(s"Result is [$result]")
+        case None => println("Invalid input")
       repl()
   }
 
-  def calculate(a: Int, operation: String, b: Int) = {
-    s"Placeholder for result"
+  def calculate(a: Int, operation: String, b: Int): Double = {
+    123.456 // TODO Placeholder
   }
 
   @main def calculator() =
