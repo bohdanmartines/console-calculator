@@ -24,6 +24,7 @@ def repl(): Unit =
     val result = input match
       case Pattern(a, operation, b) => calculate(a.toInt, operation, b.toInt)
       case other => Left("Invalid input!")
+    result.fold(error => println(error), res => println(s"Result is [$res]"))
     repl()
 
 def calculate(a: Int, operation: String, b: Int): Either[String, Double] =
