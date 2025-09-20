@@ -1,12 +1,12 @@
 package com.study.calculator.console
 
-import com.study.calculator.console.Operation.{Add, Divide, Multiply, Substruct}
+import com.study.calculator.console.Operation.{Add, Divide, Multiply, Power, Substruct}
 
 import scala.annotation.tailrec
 import scala.io.StdIn.readLine
 
 val LinePrefix = "calc>"
-val Pattern = raw"(\d+)\s*([+\-*/])\s*(\d+)".r
+val Pattern = raw"(\d+)\s*([+\-*/^])\s*(\d+)".r
 
 @main def app(): Unit =
   println("Welcome to Console Calculator!")
@@ -43,3 +43,4 @@ def calculate(a: Int, operation: Operation, b: Int): Either[String, Double] =
     case Divide =>
       if b == 0 then Left("Cannot divide by zero!")
       else Right(a / b)
+    case Power => Right(Math.pow(a, b))
