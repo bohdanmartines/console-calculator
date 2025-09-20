@@ -1,6 +1,6 @@
 package com.study.calculator.console
 
-import com.study.calculator.console.Operation.{Add, Divide, Multiply, Power, Substruct}
+import com.study.calculator.console.Operation.{Add, Divide, Multiply, Power, Subtruct}
 
 import scala.annotation.tailrec
 import scala.io.StdIn.readLine
@@ -38,7 +38,7 @@ def calculate(a: Int, operation: String, b: Int): Either[String, Double] =
 def calculate(a: Int, operation: Operation, b: Int): Either[String, Double] =
   operation match
     case Add => Right(a + b)
-    case Substruct => Right(a - b)
+    case Subtruct => Right(a - b)
     case Multiply => Right(a * b)
     case Divide =>
       if b == 0 then Left("Cannot divide by zero!")
