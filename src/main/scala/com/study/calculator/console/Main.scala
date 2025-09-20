@@ -2,12 +2,14 @@ package com.study.calculator.console
 
 import com.study.calculator.console.Operation.{Add, Divide, Multiply, Substruct}
 
+import scala.annotation.tailrec
 import scala.io.StdIn.readLine
 
 object Main {
 
   val Pattern = raw"(\d+)\s*([+\-*/^])\s*(\d+)".r
 
+  @tailrec
   private def repl(): Unit = {
     println("Examples:  2 + 3 | 5 - 3 | 3 * 4 | 6 / 2")
     val input = readLine("calc> ")
@@ -38,7 +40,7 @@ object Main {
       case Divide => a / b
   }
 
-  @main def calculator() =
+  @main def calculator(): Unit =
     println("Console Calculator. Print :q to quit")
     repl()
 }
