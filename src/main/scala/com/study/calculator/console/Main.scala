@@ -23,7 +23,7 @@ object Main {
       val result = input.trim match
         case Pattern(a, operation, b) =>
           Operation.parse(operation) match
-            case Right(x) => Right(calculate(a.toInt, x, b.toInt))
+            case Right(x) => calculate(a.toInt, x, b.toInt)
             case left @ Left(_) => left
         case _ => Left("Invalid input")
       result match
@@ -32,12 +32,16 @@ object Main {
       repl()
   }
 
-  private def calculate(a: Double, operation: Operation, b: Double): Double = {
+  private def calculate(a: Double, operation: Operation, b: Double): Either[String, Double] = {
     operation match
-      case Add => a + b
-      case Substruct => a - b
-      case Multiply => a * b
-      case Divide => a / b
+      case Add => Right(a + b)
+      case Substruct => Right(a - b)
+      case Multiply => Right(a * b)
+      case Divide =>
+        if b == 0 then
+          Left("Cannot divide by zero!")
+        else
+          Right(a / b)
   }
 
   @main def calculator(): Unit =
