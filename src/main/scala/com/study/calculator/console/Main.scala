@@ -21,13 +21,17 @@ def repl(): Unit =
   else if input.trim.isEmpty then
     repl()
   else
-    // TODO Add handling user input
-    input match
-      case Pattern(a, operation, b) =>
-        val result = calculate(a, operation, b)
-        println(s"Result is [$result]")
-      case other =>
+    val result = input match
+      case Pattern(a, operation, b) => calculate(a.toInt, operation, b.toInt)
+      case other => Left("Invalid input!")
     repl()
 
-def calculate(str: String, str1: String, str2: String): Double =
-  0.0 // TODO Placeholder
+def calculate(a: Int, operation: String, b: Int): Either[String, Double] =
+  Operation.fromString(operation) match
+    case Right(value) => calculate(a, value, b)
+    case Left(error) => Left(error)
+
+
+def calculate(a: Int, operation: Operation, b: Int): Either[String, Double] =
+  println(s"Your operation is $a $operation $b")
+  Right(0.0) // TODO Placeholder
