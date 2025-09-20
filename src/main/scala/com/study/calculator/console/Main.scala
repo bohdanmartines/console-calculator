@@ -4,7 +4,7 @@ import scala.io.StdIn.readLine
 
 object Main {
 
-  val Pattern = raw"(\d+)[+\-*/^](\d+)".r
+  val Pattern = raw"(\d+)\s*([+\-*/^])\s*(\d+)".r
 
   enum Operation:
     case Add, Substruct, Multiply, Divide, Power
@@ -19,7 +19,7 @@ object Main {
     else if input.trim.isEmpty then
       repl()
     else
-      val result = input match
+      val result = input.trim match
         case Pattern(a, operation, b) => Some(calculate(a.toInt, operation, b.toInt))
         case _ => None
       result match
