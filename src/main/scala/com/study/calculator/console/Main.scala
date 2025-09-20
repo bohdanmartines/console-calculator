@@ -16,6 +16,8 @@ object Main {
 
     if input == null || input.trim == ":q" then
       print("bye!")
+    else if input.trim.isEmpty then
+      repl()
     else
       val result = input match
         case Pattern(a, operation, b) => calculate(a.toInt, operation, b.toInt)
