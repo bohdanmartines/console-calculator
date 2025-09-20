@@ -23,6 +23,11 @@ def repl(): Unit =
   else
     // TODO Add handling user input
     input match
-      case Pattern(a, operation, b) => println("Valid input")
-      case other => println("Invalid input")
+      case Pattern(a, operation, b) =>
+        val result = calculate(a, operation, b)
+        println(s"Result is [$result]")
+      case other =>
     repl()
+
+def calculate(str: String, str1: String, str2: String): Double =
+  0.0 // TODO Placeholder
