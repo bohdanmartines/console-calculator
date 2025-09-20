@@ -17,11 +17,14 @@ object Main {
       repl()
     else
       val result = input.trim match
-        case Pattern(a, operation, b) => Some(calculate(a.toInt, Operation.parse(operation), b.toInt))
-        case _ => None
+        case Pattern(a, operation, b) =>
+          Operation.parse(operation) match
+            case Right(x) => Right(calculate(a.toInt, x, b.toInt))
+            case left @ Left(_) => left
+        case _ => Left("Invalid input")
       result match
-        case Some(x) => println(s"Result is [$result]")
-        case None => println("Invalid input")
+        case Right(x) => println(s"Result is [$x]")
+        case Left(x) => println(x)
       repl()
   }
 
