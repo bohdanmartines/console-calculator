@@ -16,7 +16,6 @@ val Pattern = raw"(\d+)\s*([+\-*/^])\s*(\d+)".r
 def repl(): Unit =
   println("Type an operation. Examples: 1 + 2 | 4 - 1 | 2 * 3 | 6 / 2")
   val input = readLine(LinePrefix)
-  println(s"You entered [$input]")
 
   if input == null || input.equals(":q") then
     println("Bye!")
