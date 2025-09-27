@@ -1,6 +1,6 @@
 package com.study.calculator.console
 
-import com.study.calculator.console.Operation.{Add, Divide, Multiply, Power, Subtruct}
+import com.study.calculator.console.Operation.{Add, Divide, Multiply, Power, Subtract}
 
 object Calculator:
 
@@ -12,7 +12,7 @@ object Calculator:
   def calculate(a: BigDecimal, operation: Operation, b: BigDecimal): Either[String, BigDecimal] =
     operation match
       case Add => Right(a + b)
-      case Subtruct => Right(a - b)
+      case Subtract => Right(a - b)
       case Multiply => Right(a * b)
       case Divide =>
         if b == 0 then Left("Cannot divide by zero!")

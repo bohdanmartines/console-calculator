@@ -7,7 +7,7 @@ class OperationSpec extends AnyFunSuite:
   // Test the 'Operation.fromString'
   test("Operation.fromString should correctly map valid symbols to operations"):
     assert(Operation.fromString("+") == Right(Operation.Add))
-    assert(Operation.fromString("-") == Right(Operation.Subtruct))
+    assert(Operation.fromString("-") == Right(Operation.Subtract))
     assert(Operation.fromString("*") == Right(Operation.Multiply))
     assert(Operation.fromString("/") == Right(Operation.Divide))
     assert(Operation.fromString("^") == Right(Operation.Power))
